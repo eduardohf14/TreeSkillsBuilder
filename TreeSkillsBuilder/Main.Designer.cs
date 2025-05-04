@@ -38,14 +38,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.positionTxt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.skillsDataGrid = new System.Windows.Forms.DataGridView();
             this.skill = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.points = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSaveSkill = new System.Windows.Forms.Button();
+            this.btnDistribute = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pointsTxt)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCaptureMousePos
@@ -140,18 +141,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add skill";
             // 
-            // dataGridView1
+            // skillsDataGrid
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.skillsDataGrid.AllowUserToAddRows = false;
+            this.skillsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.skillsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.skillsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.skill,
             this.points,
             this.position});
-            this.dataGridView1.Location = new System.Drawing.Point(28, 330);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(469, 226);
-            this.dataGridView1.TabIndex = 12;
+            this.skillsDataGrid.Location = new System.Drawing.Point(28, 330);
+            this.skillsDataGrid.Name = "skillsDataGrid";
+            this.skillsDataGrid.Size = new System.Drawing.Size(469, 226);
+            this.skillsDataGrid.TabIndex = 12;
+            this.skillsDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.skillsDataGrid_CellEndEdit);
+            this.skillsDataGrid.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.skillsDataGrid_UserDeletingRow);
             // 
             // skill
             // 
@@ -178,12 +182,23 @@
             this.btnSaveSkill.UseVisualStyleBackColor = true;
             this.btnSaveSkill.Click += new System.EventHandler(this.btnSaveSkill_Click);
             // 
+            // btnDistribute
+            // 
+            this.btnDistribute.Location = new System.Drawing.Point(350, 43);
+            this.btnDistribute.Name = "btnDistribute";
+            this.btnDistribute.Size = new System.Drawing.Size(147, 23);
+            this.btnDistribute.TabIndex = 13;
+            this.btnDistribute.Text = "Distribuir pontos";
+            this.btnDistribute.UseVisualStyleBackColor = true;
+            this.btnDistribute.Click += new System.EventHandler(this.btnDistribute_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 579);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnDistribute);
+            this.Controls.Add(this.skillsDataGrid);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.muWindowNameTxt);
@@ -192,10 +207,11 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TreeSkillsBuilder";
+            this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pointsTxt)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skillsDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,10 +229,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox positionTxt;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView skillsDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn skill;
         private System.Windows.Forms.DataGridViewTextBoxColumn points;
         private System.Windows.Forms.DataGridViewTextBoxColumn position;
         private System.Windows.Forms.Button btnSaveSkill;
+        private System.Windows.Forms.Button btnDistribute;
     }
 }
